@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
 #
 
-SEED_VERSION="llvm17"
+SEED_VERSION="llvm19"
 SQLITE_INPUT=./sqlite3.ll
+
 DEST_FOLDER_SYM_P="oracle/SYM_${SEED_VERSION}_p"
 DEST_FOLDER_FA_P="oracle/FA_${SEED_VERSION}_p"
 
@@ -22,10 +23,10 @@ mkdir -p ${DEST_FOLDER_SYM_ONDEMAND}
 mkdir -p ${DEST_FOLDER_FA_ONDEMAND}
 
 # Update the BUILD to use
-LLVM_BUILD="/usr"
+LLVM_BUILD="/home/cs23btech11001/llvm-project/build"
 
 #Update IR2Vec Path to use
-IR2VEC_PATH="../../build/bin/ir2vec"
+IR2VEC_PATH="/home/cs23btech11001/IR2Vec/new-new-build/bin/ir2vec"
 
 if [ -z ${LLVM_BUILD} ]; then
 	echo "Enter the llvm build path.."
@@ -46,16 +47,19 @@ functions=("main" "buildMatchingMachine" "search" "BellamFord" "BFS" "isBCUtil" 
 # define a counter variable to count the number of files
 cat index-${SEED_VERSION}.files | wc -l
 echo "generating P level files"
+:'
 while IFS= read -r d; do
 	${IR2VEC_PATH} -sym -level p -o ${DEST_FOLDER_SYM_P}/ir2vec.txt ${d} &>/dev/null
 	${IR2VEC_PATH} -fa -level p -o ${DEST_FOLDER_FA_P}/ir2vec.txt ${d} &>/dev/null
 done <index-${SEED_VERSION}.files
 wait
+'
 
 echo "Generating SQL level files"
 ${IR2VEC_PATH} -sym -level p -o ${DEST_FOLDER_SYM_P}/sqlite3.txt ${SQLITE_INPUT} &>/dev/null
 ${IR2VEC_PATH} -fa -level p -o ${DEST_FOLDER_FA_P}/sqlite3.txt ${SQLITE_INPUT} &>/dev/null
 
+:'
 echo "generating F level files"
 while IFS= read -r d; do
 	${IR2VEC_PATH} -sym -level f -o ${DEST_FOLDER_SYM}/ir2vec.txt ${d} &>/dev/null
@@ -72,3 +76,5 @@ while IFS= read -r d; do
 	done
 done <index-${SEED_VERSION}.files
 wait
+'
+

@@ -1,0 +1,1 @@
+/usr/bin/gfortran -L/usr/lib/x86_64-linux-gnu -lm -O3 -DNDEBUG -O3 CMakeFiles/sblat1.dir/sblat1.f.o -o sblat1  -Wl,-rpath,/home/cs23btech11001/IR2Vec/eigen-build/blas ../libeigen_blas.so 

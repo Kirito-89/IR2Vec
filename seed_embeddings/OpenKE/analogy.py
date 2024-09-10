@@ -56,7 +56,7 @@ def findTopk(dict1, k, values):
 
 
 def getAnalogyScore(fileName):
-    refFile = "analogies.txt"
+    refFile = "/home/cs23btech11001/IR2Vec/seed_embeddings/OpenKE/analogies.txt"
     with open(refFile) as f:
         analogies = [line.strip("\n") for line in f]
         totalCnt = 0

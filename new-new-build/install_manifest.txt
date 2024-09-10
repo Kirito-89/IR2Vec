@@ -1,0 +1,6 @@
+/home/cs23btech11001/IR2Vec/new-new-build/install/lib/libIR2Vec.so.2.1.2
+/home/cs23btech11001/IR2Vec/new-new-build/install/lib/libIR2Vec.so.1
+/home/cs23btech11001/IR2Vec/new-new-build/install/lib/libIR2Vec.so
+/home/cs23btech11001/IR2Vec/new-new-build/install/include/IR2Vec.h
+/home/cs23btech11001/IR2Vec/new-new-build/install/lib/libIR2Vec.a
+/home/cs23btech11001/IR2Vec/new-new-build/install/include/IR2Vec.h

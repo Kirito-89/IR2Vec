@@ -15,18 +15,21 @@ If you have not done `make`, follow the following steps to build `ir2vec` binary
 ## Step 2: Generating Triplets
 #### Steps to collect the triplets
  Run `triplets.sh` script with the required parameters
- Usage: `bash triplets.sh <build dir> <No of opt> <llFile list> <output FileName>`
+ Usage: `bash triplets.sh <build dir> <No of opt> <llFile list> <output FileName> llvm_build_path`
 * `buildDir` points to the path of IR2Vec's build folder
 * `numOpt` is an integer between `1` and `6`
     * Determines number of optimization sequences to apply on each file.
     * Optimization sequence can be one of the standard sequences `O[0-3sz]` selected at random
-* `llFileList` is a file containing the path of all the ll files. Use `find <ll_dir> -type f > files_path.txt`
+* `llFileList` is a file containing the path of all the ll files. Use `find <dir> -type f >> files_path.txt`
+* Where `dir` include ll_dir,spec2006_dir(.o files) and spec2017(.o files)
 * `outputFileName` is the file where the triplets would be written
     * New file would be created if the file with given name *does not* exist.
     * If file *exists* with the given name, the triplets would be **appended** on to the same file.
 
 Example Usage:
 > bash triplets.sh ../build 2 files_path.txt triplets.txt
+
+Note: For better vocabulary use <No of opt> parameter as 6
 
 #### Files used to generate Seed Embedding Vocabulary
 We generated ll files from `Boost` libraries and `spec cpu 2017` benchmarks to generate triplets.

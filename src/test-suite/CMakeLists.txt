@@ -48,7 +48,7 @@ if(NOT EXISTS ${SQLITE_LLVM_IR} AND ENABLE_SQLITE)
         endif()
     endif()
 
-    find_program(CLANG_BIN NAMES clang-17 clang)
+    find_program(CLANG_BIN NAMES clang-19 clang HINTS /home/cs23btech11001/llvm-project/build/bin)
     if(NOT CLANG_BIN)
         message(FATAL_ERROR "Clang not found. Please install it.")
     endif()
@@ -68,11 +68,11 @@ endif()
 
 # sanity checks and lit configs
 configure_file(sanity_check.sh.cmake sanity_check.sh @ONLY)
-file(COPY PE-benchmarks-llfiles-llvm17 DESTINATION ./)
+file(COPY PE-benchmarks-llfiles-llvm19 DESTINATION ./)
 file(COPY sqlite3.ll DESTINATION ./)
 file(COPY oracle DESTINATION ./)
 file(COPY ../../vocabulary DESTINATION ./)
-file(COPY index-llvm17.files DESTINATION ./)
+file(COPY index-llvm19.files DESTINATION ./)
 
 
 configure_file(lit.site.cfg.py.in lit.site.cfg.py @ONLY)
